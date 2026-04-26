@@ -1,0 +1,18 @@
+# Dependencias (esta es la más importante, NUNCA subas esto)
+node_modules/
+
+# Archivos de producción (el resultado de 'npm run build')
+dist/
+build/
+
+# Variables de entorno (secretos, llaves de API, etc.)
+.env
+.env.local
+
+# Logs y errores
+npm-debug.log*
+yarn-error.log*
+
+# Archivos del sistema u editores
+.DS_Store
+.vscode/

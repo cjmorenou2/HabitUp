@@ -1,0 +1,521 @@
+/* ============================================================
+   estilos.css  –  HabitUp React
+   Hoja de estilos global con identidad visual (rosas, blancos,
+   sombras suaves) y diseño responsive para Desktop, Tablet y Móvil.
+   Principios aplicados: contraste de color, jerarquía visual,
+   consistencia, feedback visual, accesibilidad.
+   ============================================================ */
+
+/* ── Variables de color ──────────────────────────────────── */
+:root {
+  --rosa-principal: #e06f8b;
+  --rosa-suave:     #ffc0cb;
+  --rosa-hover:     rgba(255, 192, 203, 0.3);
+  --rosa-activo:    #ffe4e8;
+  --gris-texto:     #495057;
+  --gris-claro:     #f8f9fa;
+  --sombra:         0 4px 12px rgba(0, 0, 0, 0.08);
+  --sombra-hover:   0 8px 20px rgba(0, 0, 0, 0.12);
+  --radius:         14px;
+  --transicion:     all 0.3s ease;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--gris-claro);
+  color: var(--gris-texto);
+}
+
+/* Animación de entrada en cada página (efecto fade) */
+.contenido {
+  animation: fade 0.35s ease-in-out;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Portada / Hero ───────────────────────────────────────── */
+.portada-wrapper {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
+    linear-gradient(135deg, #ffeef3 0%, #f5f0ff 50%, #eef5ff 100%);
+  animation: fade 0.4s ease-in-out;
+}
+
+.hero-section {
+  min-height: 65vh;
+}
+
+/* Logo grande animado */
+.logo-habitup {
+  font-weight: 700;
+  color: var(--rosa-principal);
+  letter-spacing: -3px;
+  text-shadow: 2px 2px 4px rgba(224, 111, 139, 0.2);
+  font-size: clamp(64px, 14vw, 140px);
+  margin: 0;
+  line-height: 1;
+  animation: logoEntrada 0.8s ease-out;
+}
+
+@keyframes logoEntrada {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* Logo pequeño en navbar */
+.logo-texto {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--rosa-principal);
+  letter-spacing: -0.5px;
+}
+
+/* Subtítulo portada */
+.portada-subtitulo {
+  font-size: 1.15rem;
+  color: var(--gris-texto);
+  margin-top: 12px;
+}
+
+/* ── Drop Cap (primera letra grande y a color) ────────────── */
+.primera-letra {
+  font-size: 2.4em;
+  font-weight: 800;
+  color: var(--rosa-principal);
+  line-height: 1;
+  /*float: left;*/
+  margin-right: 3px;
+  text-shadow: 1px 1px 0 rgba(224, 111, 139, 0.15);
+}
+
+/* ── Título de página ────────────────────────────────────── */
+.pagina-titulo {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #2d3748;
+  border-left: 5px solid var(--rosa-principal);
+  padding-left: 14px;
+  margin: 15px 0 15px 0;
+  overflow: hidden; /* para el float del drop cap */
+}
+
+/* ── Botón principal ─────────────────────────────────────── */
+.btn-ingresar {
+  background: white;
+  border: 1.5px solid #e9ecef;
+  color: var(--gris-texto);
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 8px 28px;
+  transition: var(--transicion);
+}
+
+.btn-ingresar:hover {
+  background-color: #fff5f7;
+  border-color: var(--rosa-suave);
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-hover);
+  color: var(--rosa-principal);
+}
+
+.btn-ingresar:active {
+  transform: translateY(-1px);
+  background-color: var(--rosa-activo);
+}
+
+/* ── Collapse info ───────────────────────────────────────── */
+.collapse-info {
+  margin-top: 8px;
+}
+
+.badge-info-item {
+  display: inline-block;
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  color: var(--gris-texto);
+  box-shadow: var(--sombra);
+}
+
+/* ── Carrusel custom ─────────────────────────────────────── */
+.carrusel-section {
+  background: linear-gradient(135deg, #fff5f7 0%, #f5f0ff 100%);
+}
+
+.carrusel-wrapper {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.carrusel-slide {
+  padding: 30px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrusel-icono {
+  font-size: 3rem;
+}
+
+/* ── Video wrapper ───────────────────────────────────────── */
+.video-wrapper {
+  max-width: 640px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--sombra-hover);
+}
+
+/* ── Popover custom ──────────────────────────────────────── */
+.popover-custom {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 240px;
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid #e9ecef;
+  z-index: 1060;
+  animation: fade 0.2s ease;
+}
+
+.popover-header-custom {
+  background: var(--rosa-activo);
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+  color: #2d3748;
+}
+
+.popover-body-custom {
+  padding: 12px 14px;
+  font-size: 0.875rem;
+  color: var(--gris-texto);
+}
+
+/* ── Footer portada ──────────────────────────────────────── */
+.portada-footer {
+  background-color: rgba(255, 245, 247, 0.6);
+  border-top: 1px solid rgba(162, 169, 177, 0.3);
+}
+
+.footer-link {
+  color: var(--gris-texto);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: var(--transicion);
+}
+
+.footer-link:hover {
+  background-color: var(--rosa-hover);
+  color: #d63384;
+}
+
+.footer-social {
+  color: var(--gris-texto);
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer-social:hover {
+  color: var(--rosa-principal);
+  transform: translateY(-3px);
+}
+
+/* ── Navbar ──────────────────────────────────────────────── */
+.nav-link {
+  color: var(--gris-texto) !important;
+  font-weight: 500;
+  padding: 8px 14px !important;
+  border-radius: 8px;
+  transition: var(--transicion);
+}
+
+.nav-link:hover {
+  background-color: var(--rosa-hover);
+  color: #d63384 !important;
+}
+
+.nav-link-activo {
+  background-color: var(--rosa-activo) !important;
+  color: var(--rosa-principal) !important;
+  font-weight: 600 !important;
+}
+
+/* Avatar con iniciales */
+.avatar-iniciales {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--rosa-activo);
+  color: var(--rosa-principal);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--rosa-suave);
+  font-size: 0.95rem;
+}
+
+/* ── Modal de Login ──────────────────────────────────────── */
+.login-titulo {
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.login-icono {
+  background-color: var(--rosa-activo);
+  border-color: #e9ecef;
+  color: var(--rosa-principal);
+}
+
+.ojito-btn {
+  border-color: #dee2e6;
+  color: var(--gris-texto);
+  transition: var(--transicion);
+}
+
+.ojito-btn:hover {
+  background-color: var(--rosa-hover);
+  border-color: var(--rosa-suave);
+  color: var(--rosa-principal);
+}
+
+/* CAPTCHA */
+.captcha-box {
+  background: linear-gradient(135deg, #fff5f7, #f5f0ff);
+  border: 1.5px dashed var(--rosa-suave);
+  border-radius: 10px;
+  padding: 12px 18px;
+  text-align: center;
+}
+
+.captcha-pregunta {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #2d3748;
+  letter-spacing: 1px;
+}
+
+/* ── Dashboard: Stats ────────────────────────────────────── */
+.stat-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  text-align: center;
+  box-shadow: var(--sombra);
+  transition: var(--transicion);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-hover);
+}
+
+.stat-numero {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2d3748;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: #718096;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Tip del día */
+.tip-card {
+  background: linear-gradient(135deg, #fff9e6, #fffbf0);
+  border: 1px solid #ffd97d;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  color: #5c4a00;
+}
+
+/* ── Cards de acceso rápido ──────────────────────────────── */
+.card-acceso {
+  background: white;
+  border-radius: var(--radius);
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: var(--sombra);
+  transition: var(--transicion);
+  color: #2d3748;
+  height: 100%;
+}
+
+.card-acceso:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-hover);
+  background-color: #fff5f7;
+}
+
+/* ── Listas de hábitos / tareas ──────────────────────────── */
+.lista-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  margin: 0 0 12px 0;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: var(--sombra);
+  transition: var(--transicion);
+  gap: 10px;
+}
+
+.lista-item:hover {
+  background-color: rgba(255, 192, 203, 0.1);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-hover);
+}
+
+/* ── Página Contactos ────────────────────────────────────── */
+.volver-link {
+  color: var(--gris-texto);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.volver-link:hover {
+  color: var(--rosa-principal);
+}
+
+.miembro-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  box-shadow: var(--sombra);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicion);
+  width: 100%;
+  text-align: left;
+}
+
+.miembro-btn:hover {
+  background: #ffffff;
+  box-shadow: var(--sombra-hover);
+  transform: translateY(-2px);
+}
+
+.miembro-foto {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--rosa-suave);
+  flex-shrink: 0;
+}
+
+.foto-grande {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid rgba(224, 111, 139, 0.3);
+}
+
+.miembro-detalle {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 24px;
+  margin-top: -6px;
+  animation: fade 0.25s ease-in-out;
+}
+
+.badge-habilidad {
+  display: inline-block;
+  background: var(--rosa-activo);
+  color: var(--rosa-principal);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1px solid rgba(224, 111, 139, 0.2);
+}
+
+/* ── Fondo oscuro del modal ──────────────────────────────── */
+.fondoModal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ── Responsive Design ───────────────────────────────────── */
+
+/* Tablet (≤768px) */
+@media (max-width: 768px) {
+  .logo-habitup {
+    font-size: clamp(56px, 20vw, 100px);
+  }
+
+  .pagina-titulo {
+    font-size: 1.35rem;
+  }
+
+  .card-acceso {
+    padding: 20px 16px;
+  }
+
+  .carrusel-slide {
+    padding: 20px;
+  }
+
+  .stat-numero {
+    font-size: 1.6rem;
+  }
+}
+
+/* Móvil (≤480px) */
+@media (max-width: 480px) {
+  .logo-habitup {
+    font-size: clamp(48px, 22vw, 80px);
+    letter-spacing: -2px;
+  }
+
+  .portada-subtitulo {
+    font-size: 1rem;
+  }
+
+  .lista-item {
+    padding: 14px 16px;
+  }
+
+  .pagina-titulo {
+    font-size: 1.2rem;
+  }
+
+  .foto-grande {
+    width: 120px;
+    height: 120px;
+  }
+
+  .carrusel-slide {
+    min-height: 150px;
+    padding: 16px;
+  }
+}
